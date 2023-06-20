@@ -1,5 +1,7 @@
+import BasicCard from "./components/card/BasicCard";
+
 function App() {
-  return <>Card Games</>;
+  return <BasicCard />;
 }
 
 export default App;

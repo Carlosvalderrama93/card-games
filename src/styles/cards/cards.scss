@@ -1,40 +1,60 @@
-.basic-card {
-  margin-top: 30px;
-  position: relative;
+.card {
+  width: 240px;
+  height: 336px;
+  margin: auto;
+  cursor: pointer;
+  //position: absolute;
+  //perspective: 1000px;
 
-  &-element {
-    position: absolute;
-    height: 220px;
-    width: 157px;
-    perspective: 1000px;
-    cursor: pointer;
+  &:hover &-ghost {
+    transform: rotateY(180deg);
+  }
 
-    &:hover &-inner {
-      transform: rotateY(180deg);
-    }
-
-    &-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
+  &-ghost {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    //position: relative;
+    //text-align: center;
   }
 
   &-back,
   &-front {
+    background-color: #9aa5c2;
+    box-sizing: border-box;
+    border-radius: 11px;
     position: absolute;
     width: 100%;
     height: 100%;
+    padding: 18px;
     -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    //backface-visibility: hidden;
+  }
 
-    &-img {
-      height: 100%;
+  &-front {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      & > p {
+        margin: 0;
+        font-size: 50px;
+        font-weight: bold;
+      }
+
+      &:nth-of-type(1) {
+        align-self: start;
+      }
+
+      &:nth-of-type(3) {
+        align-self: end;
+        transform: rotateX(180deg);
+      }
     }
   }
+
   &-back {
     transform: rotateY(180deg);
   }

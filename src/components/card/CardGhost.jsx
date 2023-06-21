@@ -2,11 +2,12 @@ import React from "react";
 
 import CardFront from "./CardFront";
 import CardBack from "./CardBack";
-function CardGhost() {
+function CardGhost(props) {
+  const { title, typeFront, typeBack } = props;
   return (
     <div className="card-ghost">
-      <CardFront />
-      <CardBack type={"two"} />
+      <CardFront title={title} type={typeFront} />
+      <CardBack type={typeBack} />
     </div>
   );
 }

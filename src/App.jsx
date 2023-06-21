@@ -1,8 +1,7 @@
-import BasicCard from "./components/card/Card";
-import CardFront from "./components/card/CardFront";
+import Card from "./components/card/Card";
 
 function App() {
-  return <BasicCard />;
+  return <Card title={"A"} typeFront={"club"} typeBack={"one"} />;
 }
 
 export default App;

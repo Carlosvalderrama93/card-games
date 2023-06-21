@@ -1,4 +1,5 @@
-import BasicCard from "./components/card/BasicCard";
+import BasicCard from "./components/card/Card";
+import CardFront from "./components/card/CardFront";
 
 function App() {
   return <BasicCard />;

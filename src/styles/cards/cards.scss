@@ -29,7 +29,7 @@
     height: 100%;
     padding: 18px;
     -webkit-backface-visibility: hidden;
-    //backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   &-front {
@@ -38,8 +38,11 @@
     align-items: center;
 
     &-title {
-      & > p {
-        margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & > span {
         font-size: 50px;
         font-weight: bold;
       }

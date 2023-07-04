@@ -1,13 +1,26 @@
 import React from "react";
-import CardGhost from "./CardGhost";
+import PropTypes from "prop-types";
+
+import CardTop from "./CardTop";
+import validProps from "../../Others/validProps";
+import propsValidator from "../../Others/propsValidator";
 
 function Card(props) {
-  const { title, typeFront, typeBack } = props;
-  return (
-    <div className="card">
-      <CardGhost title={title} typeFront={typeFront} typeBack={typeBack} />
-    </div>
-  );
+  const areValid = propsValidator(props, 3);
+  if (areValid) {
+    return (
+      <div className="card">
+        <CardTop rank={props.rank} suite={props.suite} color={props.color} />
+      </div>
+    );
+  }
+  return null;
 }
+
+Card.PropTypes = {
+  rank: PropTypes.oneOf(validProps.rank),
+  suite: PropTypes.oneOf(validProps.suite),
+  color: PropTypes.oneOf(validProps.color),
+};
 
 export default Card;

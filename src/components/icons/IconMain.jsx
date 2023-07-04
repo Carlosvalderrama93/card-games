@@ -5,7 +5,9 @@ import IconDiamont from "./IconDiamont";
 import IconHeart from "./IconHeart";
 import IconSpade from "./IconSpade";
 
-function IconMain({ suite }) {
+function IconMain({ suite, children }) {
+  if (children) return null;
+
   return suite === "club" ? (
     <IconClub />
   ) : suite === "diamont" ? (

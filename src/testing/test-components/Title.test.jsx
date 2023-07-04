@@ -1,7 +1,7 @@
 import { test, describe, expect } from "vitest";
 import TestRenderer from "react-test-renderer";
 
-import Title from "../../../components/Title";
+import Title from "../../components/Title";
 
 describe("Unit testing of Title Component", () => {
   test("Should render correcttly when 'Title' is invoked with valid children", () => {

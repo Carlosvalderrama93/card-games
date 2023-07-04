@@ -1,7 +1,7 @@
 import { test, describe, expect } from "vitest";
 
 import TestRenderer from "react-test-renderer";
-import FigureMain from "../../../components/icons/FigureMain";
+import FigureMain from "../../components/icons/FigureMain";
 
 describe("Unit testing of FigureMain Component", () => {
   test("Should render correctly when 'FigureMain' is invoked with valid arguments", () => {
@@ -22,7 +22,7 @@ describe("Unit testing of FigureMain Component", () => {
     expect(jsonFigureMain).toBeNull();
   });
 
-  test.only("Should return 'null' when 'FigureMain' is invoked with children", () => {
+  test("Should return 'null' when 'FigureMain' is invoked with children", () => {
     const figureMain = TestRenderer.create(
       <FigureMain suite={"heart"}>
         <p>some</p>

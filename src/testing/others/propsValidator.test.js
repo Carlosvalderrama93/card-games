@@ -1,5 +1,5 @@
 import { test, describe, expect } from "vitest";
-import propsValidator from "../../../Others/propsValidator";
+import propsValidator from "../../Others/propsValidator";
 
 describe("Unit testing of 'propsvalidator' function", () => {
   test("Should render correctly when 'propsValidator' is invoked with valid arguments", () => {

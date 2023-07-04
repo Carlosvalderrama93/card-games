@@ -13,7 +13,7 @@ describe("Unit testing from Card Component", () => {
     expect(jsonCard).toBeTruthy();
   });
 
-  test("Should render correctly with 3 props when 'Card' is invoked with valid arguments", () => {
+  test("Should render correctly its child 'CardTop' with 3 props when 'Card' is invoked with valid arguments", () => {
     const card = TestRenderer.create(
       <Card rank={"5"} suite={"heart"} color={"blue"} />
     );

@@ -5,22 +5,16 @@ import IconDiamont from "./IconDiamont";
 import IconHeart from "./IconHeart";
 import IconSpade from "./IconSpade";
 
-function IconMain({ type }) {
-  let icon;
-
-  if (type === "club") {
-    icon = <IconClub />;
-  } else if (type === "diamont") {
-    icon = <IconDiamont />;
-  } else if (type === "heart") {
-    icon = <IconHeart />;
-  } else if (type === "spade") {
-    icon = <IconSpade />;
-  } else {
-    icon = "";
-  }
-
-  return <>{icon}</>;
+function IconMain({ suite }) {
+  return suite === "club" ? (
+    <IconClub />
+  ) : suite === "diamont" ? (
+    <IconDiamont />
+  ) : suite === "heart" ? (
+    <IconHeart />
+  ) : suite === "spade" ? (
+    <IconSpade />
+  ) : null;
 }
 
 export default IconMain;

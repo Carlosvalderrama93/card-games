@@ -20,7 +20,7 @@ function FigureMain({ type }) {
     figure = <p>Nothing here</p>;
   }
 
-  return <>{figure}</>;
+  return <div className="card-front-img">{figure}</div>;
 }
 
 export default FigureMain;

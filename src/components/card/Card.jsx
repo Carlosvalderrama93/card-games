@@ -17,7 +17,7 @@ function Card(props) {
   return null;
 }
 
-Card.PropTypes = {
+Card.propTypes = {
   rank: PropTypes.oneOf(validProps.rank),
   suite: PropTypes.oneOf(validProps.suite),
   color: PropTypes.oneOf(validProps.color),

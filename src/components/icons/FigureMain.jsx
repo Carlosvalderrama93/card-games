@@ -5,22 +5,18 @@ import FigureDiamont from "./FigureDiamont";
 import FigureHeart from "./FigureHeart";
 import FigureSpade from "./FigureSpade";
 
-function FigureMain({ type }) {
-  let figure;
-
-  if (type === "club") {
-    figure = <FigureClub />;
-  } else if (type === "diamont") {
-    figure = <FigureDiamont />;
-  } else if (type === "heart") {
-    figure = <FigureHeart />;
-  } else if (type === "spade") {
-    figure = <FigureSpade />;
-  } else {
-    figure = <p>Nothing here</p>;
-  }
-
-  return <div className="card-front-img">{figure}</div>;
+function FigureMain({ suite, children }) {
+  if (children) return null;
+  
+  return suite === "club" ? (
+    <div className="card-front-img">{<FigureClub />}</div>
+  ) : suite === "diamont" ? (
+    <div className="card-front-img">{<FigureDiamont />}</div>
+  ) : suite === "heart" ? (
+    <div className="card-front-img">{<FigureHeart />}</div>
+  ) : suite === "spade" ? (
+    <div className="card-front-img">{<FigureSpade />}</div>
+  ) : null;
 }
 
 export default FigureMain;

@@ -7,8 +7,8 @@ import IconMain from "../icons/IconMain";
 import Title from "../Title";
 
 function CardFront(props) {
-  const areValid = propsValidator(props, 2);
-  if (!areValid) return null;
+  const isValid = propsValidator(props, 2);
+  if (!isValid) return null;
   
   return (
     <div className="card-front">

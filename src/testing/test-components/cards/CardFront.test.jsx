@@ -5,7 +5,9 @@ import CardFront from "../../../components/card/CardFront";
 
 describe("Unit testing of CardFront Component", () => {
   test("Should render correctly when 'CardFront' is invoked with valid arguments", () => {
-    const cardFront = TestRenderer.create(<CardFront rank="A" suite="heart" />);
+    const cardFront = TestRenderer.create(
+      <CardFront rank={"3"} suite="CLUB" />
+    );
     const jsonCardFront = cardFront.toJSON();
     expect(jsonCardFront).toBeTruthy();
   });
@@ -18,7 +20,7 @@ describe("Unit testing of CardFront Component", () => {
 
   test("Should return 'null' when 'CardFront' is invoked with invalid arguments", () => {
     const cardFront = TestRenderer.create(
-      <CardFront rank={25} suite="#adr%" />
+      <CardFront rank={13} suite="#adr%" />
     );
     const jsonCardFront = cardFront.toJSON();
     expect(jsonCardFront).toBeNull();
@@ -26,7 +28,7 @@ describe("Unit testing of CardFront Component", () => {
 
   test("Should render 'CardCorner' child in the firts position when 'CardFront' is invoked with valid arguments", () => {
     const cardFront = TestRenderer.create(
-      <CardFront rank={"A"} suite={"heart"} />
+      <CardFront rank={"3"} suite={"CLUB"} />
     );
 
     const jsonCardFront = cardFront.toJSON();
@@ -37,7 +39,7 @@ describe("Unit testing of CardFront Component", () => {
 
   test("Should render 'CardCorner' child in the third position when 'CardFront' is invoked with valid arguments", () => {
     const cardFront = TestRenderer.create(
-      <CardFront rank={"A"} suite={"heart"} />
+      <CardFront rank={"3"} suite={"CLUB"} />
     );
 
     const jsonCardFront = cardFront.toJSON();
@@ -48,7 +50,7 @@ describe("Unit testing of CardFront Component", () => {
 
   test("Should render 'FigureMain' in the second position when 'CardFront' is invoked with valid arguments", () => {
     const cardFront = TestRenderer.create(
-      <CardFront rank={"A"} suite={"heart"} />
+      <CardFront rank={"3"} suite={"CLUB"} />
     );
 
     const jsonCardFront = cardFront.toJSON();
@@ -58,7 +60,7 @@ describe("Unit testing of CardFront Component", () => {
   });
 
   test("Should return 'null' when 'CardFront' is invoked without all required arguments", () => {
-    const cardFront = TestRenderer.create(<CardFront rank={"5"} />);
+    const cardFront = TestRenderer.create(<CardFront rank={"3"} />);
     const jsonCardFront = cardFront.toJSON();
     expect(jsonCardFront).toBeNull();
   });

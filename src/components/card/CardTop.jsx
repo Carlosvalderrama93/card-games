@@ -4,16 +4,16 @@ import CardFront from "./CardFront";
 import CardBack from "./CardBack";
 import propsValidator from "../../Others/propsValidator";
 
-function CardGhost(props) {
-  const areValid = propsValidator(props, 3);
-  if (!areValid) return null;
+function CardTop(props) {
+  const isValid = propsValidator(props, 3);
+  if (!isValid) return null;
 
   return (
-    <div className="card-ghost">
+    <div className="card-top">
       <CardFront rank={props.rank} suite={props.suite} />
       <CardBack color={props.color} />
     </div>
   );
 }
 
-export default CardGhost;
+export default CardTop;

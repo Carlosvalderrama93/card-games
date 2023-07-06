@@ -8,7 +8,7 @@ import CardBack from "../../../components/card/CardBack";
 describe("Unit testing of CardTop Component", () => {
   test("Should render correctly when 'CardTop' is invoked with valid arguments", () => {
     const cardTop = TestRenderer.create(
-      <CardTop rank={"A"} suite={"heart"} color={"blue"} />
+      <CardTop rank={"4"} suite={"heart"} color={"BLUE"} />
     );
     const jsonCardTop = cardTop.toJSON();
     expect(jsonCardTop).toBeTruthy();
@@ -16,27 +16,27 @@ describe("Unit testing of CardTop Component", () => {
 
   test("Should render correctly 'CardFront' with 2 props when 'CardTop' is invoked with valid arguments", () => {
     const cardTop = TestRenderer.create(
-      <CardTop rank={"A"} suite={"heart"} color={"blue"} />
+      <CardTop rank={"4"} suite={"HEART"} color={"BLUE"} />
     );
     const testInstance = cardTop.root;
     expect(testInstance.findByType(CardFront).props).toEqual({
-      rank: "A",
-      suite: "heart",
+      rank: "4",
+      suite: "HEART",
     });
   });
 
   test("Should render correctly 'CardBack' with 1 prop when 'CardTop' is invoked with valid arguments", () => {
     const cardTop = TestRenderer.create(
-      <CardTop rank={"A"} suite={"heart"} color={"blue"} />
+      <CardTop rank={"4"} suite={"HEART"} color={"BLUE"} />
     );
     const testInstance = cardTop.root;
     expect(testInstance.findByType(CardBack).props).toEqual({
-      color: "blue",
+      color: "BLUE",
     });
   });
 
   test("Should return 'null' when 'CardTop' is invoked with invalid arguments", () => {
-    const cardTop = TestRenderer.create(<CardTop title={25} type="#adr%" />);
+    const cardTop = TestRenderer.create(<CardTop title={14} type="#adr%" />);
     const jsonCardTop = cardTop.toJSON();
     expect(jsonCardTop).toBeNull();
   });
@@ -48,7 +48,7 @@ describe("Unit testing of CardTop Component", () => {
   });
 
   test("Should return 'null' when 'CardTop' is invoked without all required arguments", () => {
-    const cardTop = TestRenderer.create(<CardTop rank={"5"} suite={"heart"} />);
+    const cardTop = TestRenderer.create(<CardTop rank={"4"} suite={"HEART"} />);
     const jsonCardTop = cardTop.toJSON();
     expect(jsonCardTop).toBeNull();
   });

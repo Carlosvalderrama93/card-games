@@ -9,8 +9,8 @@ describe("Unit testing of CardCorner Component", () => {
   test("Should render correctly when 'CardCorner' is invoked with valid arguments", () => {
     const cardCorner = TestRenderer.create(
       <CardCorner>
-        <Title>10</Title>
-        <IconMain suite={"heart"} />
+        <Title>9</Title>
+        <IconMain suite={"diamont"} />
       </CardCorner>
     );
 
@@ -21,7 +21,7 @@ describe("Unit testing of CardCorner Component", () => {
   test("Should return 'null' when 'CardCorner' is invoked with invalid children", () => {
     const cardCorner = TestRenderer.create(
       <CardCorner>
-        <Title>11</Title>
+        <Title>19</Title>
         <IconMain suite={"hate"} />
       </CardCorner>
     );

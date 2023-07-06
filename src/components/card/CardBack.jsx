@@ -4,7 +4,7 @@ import propsValidator from "../../Others/propsValidator";
 function cardBack({ color }) {
   const isValid = propsValidator({ color }, 1);
   if (!isValid) return null;
-  const isBlue = color === "blue";
+  const isBlue = color.toUpperCase() === "BLUE";
   const cardBlue = (
     <div className="card-back">
       <img src="/card-back-blue.svg" alt="cardColor blue" />

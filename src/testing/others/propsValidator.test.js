@@ -18,7 +18,7 @@ describe("Unit testing of 'propsvalidator' function", () => {
       {
         color: "red",
         suite: "heart",
-        rank: "2",
+        rank: "J",
       },
       3
     );
@@ -35,7 +35,7 @@ describe("Unit testing of 'propsvalidator' function", () => {
       {
         color: "red",
         suite: "heart",
-        rank: "a",
+        rank: "J",
       },
       3
     );

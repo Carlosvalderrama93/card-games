@@ -1,0 +1,14 @@
+.board {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+
+  &-cards {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 50px 75px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 25px;
+  }
+}

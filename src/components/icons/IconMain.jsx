@@ -4,17 +4,20 @@ import IconClub from "./IconClub";
 import IconDiamont from "./IconDiamont";
 import IconHeart from "./IconHeart";
 import IconSpade from "./IconSpade";
+import propsValidator from "../../Others/propsValidator";
 
 function IconMain({ suite, children }) {
-  if (children) return null;
+  const isValid = propsValidator({ suite }, 1);
+  if (children || !isValid) return null;
+  suite = suite.toUpperCase();
 
-  return suite === "club" ? (
+  return suite === "CLUB" ? (
     <IconClub />
-  ) : suite === "diamont" ? (
+  ) : suite === "DIAMONT" ? (
     <IconDiamont />
-  ) : suite === "heart" ? (
+  ) : suite === "HEART" ? (
     <IconHeart />
-  ) : suite === "spade" ? (
+  ) : suite === "SPADE" ? (
     <IconSpade />
   ) : null;
 }

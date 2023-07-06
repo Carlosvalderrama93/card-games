@@ -5,7 +5,7 @@ import Title from "../../components/Title";
 
 describe("Unit testing of Title Component", () => {
   test("Should render correcttly when 'Title' is invoked with valid children", () => {
-    const title = TestRenderer.create(<Title>A</Title>);
+    const title = TestRenderer.create(<Title>5</Title>);
     const jsonTitle = title.toJSON();
     expect(jsonTitle).toBeTruthy();
   });
@@ -18,7 +18,7 @@ describe("Unit testing of Title Component", () => {
   });
 
   test("Should return 'null' when 'Title' is invoked with invalid children", () => {
-    const title = TestRenderer.create(<Title>!"ws</Title>);
+    const title = TestRenderer.create(<Title>15</Title>);
     const jsonTitle = title.toJSON();
     expect(jsonTitle).toBeNull();
   });

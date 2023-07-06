@@ -6,8 +6,8 @@ import validProps from "../../Others/validProps";
 import propsValidator from "../../Others/propsValidator";
 
 function Card(props) {
-  const areValid = propsValidator(props, 3);
-  if (areValid) {
+  const isValid = propsValidator(props, 3);
+  if (isValid) {
     return (
       <div className="card">
         <CardTop rank={props.rank} suite={props.suite} color={props.color} />

@@ -7,7 +7,7 @@ import CardTop from "../../../components/card/CardTop";
 describe("Unit testing from Card Component", () => {
   test("Should render correctly when 'Card' is invoked with valid arguments", () => {
     const card = TestRenderer.create(
-      <Card rank={"A"} suite={"heart"} color={"blue"} />
+      <Card rank={"9"} suite={"HEART"} color={"BLUE"} />
     );
     const jsonCard = card.toJSON();
     expect(jsonCard).toBeTruthy();
@@ -15,16 +15,16 @@ describe("Unit testing from Card Component", () => {
 
   test("Should render correctly its child 'CardTop' with 3 props when 'Card' is invoked with valid arguments", () => {
     const card = TestRenderer.create(
-      <Card rank={"5"} suite={"heart"} color={"blue"} />
+      <Card rank={"9"} suite={"heart"} color={"blue"} />
     );
     const testInstance = card.root;
     expect(testInstance.findByType(CardTop).props).toEqual({
-      rank: "5",
+      rank: "9",
       suite: "heart",
       color: "blue",
     });
   });
-
+  
   test("Should return 'null' when 'Card' is invoked with invalid arguments", () => {
     const card = TestRenderer.create(
       <Card typeFront={"heart"} typeBack={"one"} />
@@ -40,7 +40,7 @@ describe("Unit testing from Card Component", () => {
   });
 
   test("Should return 'null' when 'Card' is invoked without all required arguments", () => {
-    const card = TestRenderer.create(<Card rank={"5"} suite={"heart"} />);
+    const card = TestRenderer.create(<Card rank={"1"} suite={"heart"} />);
     const jsonCard = card.toJSON();
     expect(jsonCard).toBeNull();
   });

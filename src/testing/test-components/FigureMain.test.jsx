@@ -5,7 +5,7 @@ import FigureMain from "../../components/icons/FigureMain";
 
 describe("Unit testing of FigureMain Component", () => {
   test("Should render correctly when 'FigureMain' is invoked with valid arguments", () => {
-    const figureMain = TestRenderer.create(<FigureMain suite={"heart"} />);
+    const figureMain = TestRenderer.create(<FigureMain suite={"HEART"} />);
     const jsonFigureMain = figureMain.toJSON();
     expect(jsonFigureMain).toBeTruthy();
   });
@@ -24,7 +24,7 @@ describe("Unit testing of FigureMain Component", () => {
 
   test("Should return 'null' when 'FigureMain' is invoked with children", () => {
     const figureMain = TestRenderer.create(
-      <FigureMain suite={"heart"}>
+      <FigureMain suite={"HEART"}>
         <p>some</p>
       </FigureMain>
     );

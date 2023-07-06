@@ -8,13 +8,13 @@ import FigureSpade from "./FigureSpade";
 function FigureMain({ suite, children }) {
   if (children) return null;
   
-  return suite === "club" ? (
+  return suite === "CLUB" ? (
     <div className="card-front-img">{<FigureClub />}</div>
-  ) : suite === "diamont" ? (
+  ) : suite === "DIAMONT" ? (
     <div className="card-front-img">{<FigureDiamont />}</div>
-  ) : suite === "heart" ? (
+  ) : suite === "HEART" ? (
     <div className="card-front-img">{<FigureHeart />}</div>
-  ) : suite === "spade" ? (
+  ) : suite === "SPADE" ? (
     <div className="card-front-img">{<FigureSpade />}</div>
   ) : null;
 }

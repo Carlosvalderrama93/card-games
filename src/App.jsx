@@ -1,5 +1,7 @@
+import Board from "./components/Board";
+
 function App() {
-  return <>Card Games</>;
+  return <Board />;
 }
 
 export default App;

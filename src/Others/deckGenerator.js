@@ -1,8 +1,14 @@
-function deckGenerator(data) {
-  const rawDeck = data.suite.map((toSuite) => {
-    return data.rank.map((toRank, index) => {
+function deckGenerator(rawDataDeck) {
+  if (!rawDataDeck) return undefined;
+  const { suite, rank, color } = rawDataDeck;
+  const areValid = suite && rank && color;
+  if (!areValid) return undefined;
+
+  const rawDeck = suite.map((toSuite) => {
+    return rank.map((toRank, index) => {
+      const id = (toSuite + "_" + index).toLocaleLowerCase();
       const cardRaw = {
-        id: toSuite + index,
+        id,
         suite: toSuite,
         rank: toRank,
         color: "blue",

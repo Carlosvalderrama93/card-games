@@ -10,7 +10,7 @@ describe("Unit testing of Title Component", () => {
     expect(jsonTitle).toBeTruthy();
   });
 
-  test("Should return ''null when 'Title' is invoked without chindren", () => {
+  test("Should return ''null when 'Title' is invoked without children", () => {
     const title = TestRenderer.create(<Title />);
     const jsonTitle = title.toJSON();
     // Search how I can do this test.

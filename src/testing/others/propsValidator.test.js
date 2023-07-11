@@ -3,9 +3,9 @@ import propsValidator from "../../Others/propsValidator";
 
 describe("Unit testing of 'propsvalidator' function", () => {
   test("Should render correctly when 'propsValidator' is invoked with valid arguments", () => {
-    const validatedProps = propsValidator({ color: "red" }, 1);
+    const validatedProps = propsValidator({ colors: "red" }, 1);
     expect(validatedProps).toBeTruthy();
-  });
+  }s);
 
   test("Should return 'false' when 'propsValidator' is invoked without arguments", () => {
     const validatedProps = propsValidator();
@@ -16,9 +16,9 @@ describe("Unit testing of 'propsvalidator' function", () => {
   test("Should return an 'boolean' when 'propsValidator' is invoked", () => {
     const validatedProps = propsValidator(
       {
-        color: "red",
-        suite: "heart",
-        rank: "J",
+        colors: "red",
+        suites: "heart",
+        ranks: "J",
       },
       3
     );
@@ -33,9 +33,9 @@ describe("Unit testing of 'propsvalidator' function", () => {
   test("Should convert the values to 'uppercase' when 'propsValidator' is invoked with valid arguments", () => {
     const validatedProps = propsValidator(
       {
-        color: "red",
-        suite: "heart",
-        rank: "J",
+        colors: "red",
+        suites: "heart",
+        ranks: "J",
       },
       3
     );

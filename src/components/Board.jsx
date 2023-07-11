@@ -1,22 +1,17 @@
 import React from "react";
 
-import Card from "../components/card/Card";
+import deckGenerator from "../Others/deckGenerator";
+import CardGenerator from "./CardGenerator";
+import validProps from "../Others/validProps";
+import getCard from "../Others/getCard";
 
 function Board() {
+  const startingDeck = deckGenerator(validProps);
+  const startingCards = getCard(startingDeck, 4);
+
   const board = (
     <div className="board-cards">
-      <div className="board-cards-position">
-        <Card suite={"heart"} rank={"J"} color={"blue"} />
-      </div>
-      <div className="board-cards-position">
-        <Card suite={"club"} rank={"Q"} color={"red"} />
-      </div>
-      <div className="board-cards-position">
-        <Card suite={"spade"} rank={"K"} color={"red"} />
-      </div>
-      <div className="board-cards-position">
-        <Card suite={"diamont"} rank={"A"} color={"blue"} />
-      </div>
+      <CardGenerator cards={startingCards.cards} />
     </div>
   );
   return <div className="board">{board}</div>;

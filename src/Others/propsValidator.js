@@ -1,4 +1,3 @@
-import { string } from "prop-types";
 import validProps from "./validProps";
 
 export default function propsValidator(props, propsLength = 0) {

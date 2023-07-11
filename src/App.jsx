@@ -1,7 +1,7 @@
-import Card from "./components/card/Card";
+import Board from "./components/Board";
 
 function App() {
-  return <Card rank={"A"} suite={"CLUB"} color={"red"} />;
+  return <Board />;
 }
 
 export default App;

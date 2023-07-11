@@ -8,7 +8,7 @@ export default function propsValidator(props, propsLength = 0) {
   const entries = Object.entries(props);
   if (propsLength !== entries.length || propsLength <= 0) return false;
 
-  const isInvalid = ([key, value]) => {
+  const isNotValid = ([key, value]) => {
     const isString = typeof value === "string";
     if (!isString) return true;
     const valueToFind = value.toUpperCase();
@@ -17,7 +17,7 @@ export default function propsValidator(props, propsLength = 0) {
     if (!isValid) return true;
   };
 
-  const noValidated = entries.some(isInvalid);
+  const noValidated = entries.some(isNotValid);
 
   return noValidated ? false : true;
 }

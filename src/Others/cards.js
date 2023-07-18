@@ -37,10 +37,31 @@ export function createDeck() {
     return cards;
   });
 
-  const deck = rawDeck.flat();
+  const deckFlat = rawDeck.flat();
+  const deck = shuffleDeck(deckFlat);
   return deck;
 }
 export function createHand(id) {
   const hand = { id, cards: [] };
   return hand;
+}
+
+export function shuffleDeck(deck) {
+  const shuffledDeck = [];
+  const positions = [];
+  const size = deck.length;
+
+  let i = 0;
+  while (i < size) {
+    const randomNumber = Math.random() * size;
+    const roundedNumber = Math.floor(randomNumber);
+    if (positions.includes(roundedNumber)) return undefined;
+    shuffledDeck.push(deck[roundedNumber]);
+    positions.push[roundedNumber];
+    i++;
+  }
+
+  deck.length = 0;
+  deck = [...shuffledDeck];
+  return deck;
 }

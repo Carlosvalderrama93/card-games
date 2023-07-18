@@ -1,11 +1,9 @@
 import React from "react";
 
 import Card from "./card/Card";
-import validProps from "../Others/validProps";
-import deckGenerator from "../Others/deckGenerator";
 
-function CardGenerator({ cards }) {
-  return cards.map((card) => {
+function CardGenerator({ deck }) {
+  return deck.map((card) => {
     return (
       <div className="board-cards-position" key={card.id}>
         <Card

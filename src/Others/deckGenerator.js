@@ -1,24 +1,15 @@
-function deckGenerator(rawDataDeck) {
-  if (!rawDataDeck) return undefined;
-  const { suite, rank, color } = rawDataDeck;
-  const areValid = suite && rank && color;
-  if (!areValid) return undefined;
+import cardCreator from "./cardCreator";
+import validProps from "./validProps";
 
-  const rawDeck = suite.map((toSuite) => {
-    return rank.map((toRank, index) => {
-      const id = (toSuite + "_" + index).toLocaleLowerCase();
-      const cardRaw = {
-        id,
-        suite: toSuite,
-        rank: toRank,
-        color: "blue",
-      };
-      return cardRaw;
-    });
+function deckGenerator() {
+  const { suite: suites, rank: ranks } = validProps;
+  const rawDeck = suites.map((suite) => {
+    const cards = ranks.map((rank, index) => cardCreator(index, rank, suite));
+    return cards;
   });
 
-  const flattedDeck = rawDeck.flat();
-  return flattedDeck;
+  const deck = rawDeck.flat();
+  return deck;
 }
 
 export default deckGenerator;

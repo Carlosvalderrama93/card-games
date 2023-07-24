@@ -1,4 +1,12 @@
-const validProps = {
+type Rank = Record<string, number>;
+enum Suite {
+  CLUB = "CLUB",
+  DIAMOND = "DIAMOND",
+  HEART = "HEART",
+  SPADE = "SPADE",
+}
+
+const validProps: Record<string, Rank[] | Suite[] | boolean> = {
   rank: [
     { P: 0 },
     { 2: 2 },
@@ -15,7 +23,7 @@ const validProps = {
     { K: 10 },
     { A: 11 },
   ],
-  suite: ["CLUB", "DIAMONT", "HEART", "SPADE"],
+  suite: [Suite.CLUB, Suite.DIAMOND, Suite.HEART, Suite.SPADE],
   color: true,
 };
 

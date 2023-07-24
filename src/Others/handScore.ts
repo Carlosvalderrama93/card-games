@@ -1,10 +1,10 @@
-type Hand = {
+export type Hand = {
   id: number;
   cards: Card[];
   score: number;
 };
 
-type Card = {
+export type Card = {
   id: string;
   value: number;
   suite: string;

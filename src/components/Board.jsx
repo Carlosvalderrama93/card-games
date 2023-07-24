@@ -12,6 +12,7 @@ function Board() {
       {players.map((player) => (
         <div key={player.id}>
           <h2>{player.name}</h2>
+          <h4>Player Score: {player.hand.score ?? "Null"}</h4>
           <div>
             <p>
               {player.hand.cards.map((card) => (

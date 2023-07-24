@@ -1,14 +1,15 @@
-import { createHand } from "./cards";
+import { newHand } from "./cards";
 
 export function createPlayer(id, data) {
   const rawInfo = "player_" + id;
-  const hand = createHand(rawInfo);
+  const hand = newHand(rawInfo);
   const player = {
     id: data?.id ?? rawInfo,
     img: data?.img ?? null,
     hand: data?.hand ?? hand,
     name: data?.name ?? rawInfo,
     nickName: data?.nickName ?? rawInfo,
+    score: 0,
   };
 
   return player;

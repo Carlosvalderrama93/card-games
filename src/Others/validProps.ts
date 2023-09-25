@@ -1,12 +1,18 @@
-type Rank = Record<string, number>;
-enum Suite {
+export type Rank = Record<string, number>;
+export enum Suite {
   CLUB = "CLUB",
   DIAMOND = "DIAMOND",
   HEART = "HEART",
   SPADE = "SPADE",
 }
 
-const validProps: Record<string, Rank[] | Suite[] | boolean> = {
+type ValidProps = {
+  rank: Rank[];
+  suite: Suite[];
+  color: boolean;
+};
+
+const validProps: ValidProps = {
   rank: [
     { P: 0 },
     { 2: 2 },

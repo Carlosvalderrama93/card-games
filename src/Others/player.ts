@@ -1,36 +1,7 @@
+import { DefaultPlayer, Player, Players } from "./allTypes";
 import { newHand } from "./cards";
-import { Suite } from "./validProps";
 
-export type Card = {
-  id: string;
-  suite: Suite;
-  rank: string;
-  score: number;
-  color: boolean;
-};
-
-export type Cards = Card[];
-
-export type Hand = {
-  id: string;
-  score: number;
-  cards: Cards;
-};
-
-export type Player = {
-  img: string;
-  name: string;
-  nickname: string;
-  score: number;
-  id: string;
-  hand: Hand;
-};
-
-export type Players = Player[];
-
-export type DefaultPlayerConfig = Omit<Player, "id" | "hand">;
-
-const defaultPlayerConfig: DefaultPlayerConfig = {
+const defaultPlayerConfig: DefaultPlayer = {
   img: "/img/default-avatar.png",
   name: "Anonymous",
   nickname: "",
@@ -39,7 +10,7 @@ const defaultPlayerConfig: DefaultPlayerConfig = {
 
 export function createPlayer(
   id: number,
-  playerConfig: Partial<DefaultPlayerConfig> = defaultPlayerConfig
+  playerConfig: DefaultPlayer = defaultPlayerConfig
 ): Player {
   const rawInfo: string = "player_" + id;
   const player: Player = {
@@ -62,9 +33,9 @@ export function createPlayers(totalPlayers: number): Players {
   return players;
 }
 
-export function updatePlayers(players: Players, quantity: number = 1) {
+export function updatePlayers(players: Players, quantity: number = 1): void {
   if (players && typeof quantity === "number") {
-    for (let i: number = 0; i < quantity; i++) {
+    for (let i = 0; i < quantity; i++) {
       const newPlayer: Player = createPlayer(i);
       players.push(newPlayer);
     }

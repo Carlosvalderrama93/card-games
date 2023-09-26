@@ -1,17 +1,25 @@
+import {
+  Card,
+  Cards,
+  Color,
+  Hand,
+  Player,
+  Players,
+  Rank,
+  Suite,
+} from "./allTypes";
 import { setHandScore } from "./handScore";
-import { Card, Cards, Hand, Player, Players } from "./player";
 import validProps from "./validProps";
-import type { Rank, Suite } from "./validProps";
 
 export function createCard(
   rawId: number,
   rank: Rank,
   suite: Suite,
-  color: boolean = true
+  color: Color = true
 ): Card {
-  const id: string = `${suite} ${rawId}`.toLocaleLowerCase(); // check dinamyc value of "ACE:A = [1, 11]"
+  const id: string = (suite + "_" + rawId).toLocaleLowerCase(); // check dinamyc value of "ACE:A = [1, 11]"
   const [key, value] = Object.entries(rank)[0];
-  const card = {
+  const card: Card = {
     id,
     score: value,
     suite,
@@ -24,7 +32,6 @@ export function createCard(
 
 export function createDeck(): Cards {
   const { suite: suites, rank: ranks } = validProps;
-
   const rawDeck: Cards = suites
     .map((suite) => {
       const cards: Cards = ranks.map((rank, index) =>
@@ -35,16 +42,16 @@ export function createDeck(): Cards {
     .flat();
 
   const deckFlat: Cards = rawDeck.flat();
-  const deck = shuffleDeck(deckFlat);
+  const deck: Cards = shuffleDeck(deckFlat);
   return deck;
 }
 
 export function eatCard(deck: Cards): Card | void {
   const card: Card | undefined = deck.pop();
-  if (card) return card;
+  if (deck) return card;
 }
 
-export function takeCard(player: Player, deck: Cards): number | void {
+export function takeCard(player: Player, deck: Cards): void {
   const card: Card | undefined = deck.pop();
   if (card) {
     card.rank = "A";

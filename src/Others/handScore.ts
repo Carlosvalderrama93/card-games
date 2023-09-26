@@ -1,4 +1,4 @@
-import type { Hand } from "./player";
+import { Hand } from "./allTypes";
 
 export function setHandScore(hand: Hand): void {
   let score: number = hand.cards.reduce((score, card) => score + card.score, 0);

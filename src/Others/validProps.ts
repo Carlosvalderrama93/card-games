@@ -1,16 +1,4 @@
-export type Rank = Record<string, number>;
-export enum Suite {
-  CLUB = "CLUB",
-  DIAMOND = "DIAMOND",
-  HEART = "HEART",
-  SPADE = "SPADE",
-}
-
-type ValidProps = {
-  rank: Rank[];
-  suite: Suite[];
-  color: boolean;
-};
+import { Suite, ValidProps } from "./allTypes";
 
 const validProps: ValidProps = {
   rank: [

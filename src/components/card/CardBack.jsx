@@ -1,6 +1,6 @@
 import React from "react";
 
-function cardBack({ color = "BLUE" }) {
+function CardBack({ color = "BLUE" }) {
   const isBlue = color.toUpperCase() === "BLUE";
   const cardBlue = (
     <div className="card-back">
@@ -16,4 +16,4 @@ function cardBack({ color = "BLUE" }) {
   return isBlue ? cardBlue : cardRed;
 }
 
-export default cardBack;
+export default CardBack;

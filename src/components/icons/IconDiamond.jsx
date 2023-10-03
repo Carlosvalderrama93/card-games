@@ -1,6 +1,6 @@
 import React from "react";
 
-function IconDiamont() {
+function IconDiamond() {
   return (
     <svg
       width="16"
@@ -17,4 +17,4 @@ function IconDiamont() {
   );
 }
 
-export default IconDiamont;
+export default IconDiamond;

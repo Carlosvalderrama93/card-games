@@ -1,7 +1,7 @@
 import React from "react";
 
 import FigureClub from "./FigureClub";
-import FigureDiamont from "./FigureDiamont";
+import FigureDiamond from "./FigureDiamond";
 import FigureHeart from "./FigureHeart";
 import FigureSpade from "./FigureSpade";
 
@@ -10,8 +10,8 @@ function FigureMain({ suite }) {
 
   return suite === "CLUB" ? (
     <div className="card-front-img">{<FigureClub />}</div>
-  ) : suite === "DIAMONT" ? (
-    <div className="card-front-img">{<FigureDiamont />}</div>
+  ) : suite === "DIAMOND" ? (
+    <div className="card-front-img">{<FigureDiamond />}</div>
   ) : suite === "HEART" ? (
     <div className="card-front-img">{<FigureHeart />}</div>
   ) : suite === "SPADE" ? (

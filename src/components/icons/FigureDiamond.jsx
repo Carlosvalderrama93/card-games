@@ -1,6 +1,6 @@
 import React from "react";
 
-function FigureDiamont() {
+function FigureDiamond() {
   return (
     <svg
       width="100"
@@ -39,4 +39,4 @@ function FigureDiamont() {
   );
 }
 
-export default FigureDiamont;
+export default FigureDiamond;

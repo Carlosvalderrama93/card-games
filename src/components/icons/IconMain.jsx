@@ -1,7 +1,7 @@
 import React from "react";
 
 import IconClub from "./IconClub";
-import IconDiamont from "./IconDiamont";
+import IconDiamond from "./IconDiamond";
 import IconHeart from "./IconHeart";
 import IconSpade from "./IconSpade";
 
@@ -10,8 +10,8 @@ function IconMain({ suite }) {
 
   return suite === "CLUB" ? (
     <IconClub />
-  ) : suite === "DIAMONT" ? (
-    <IconDiamont />
+  ) : suite === "DIAMOND" ? (
+    <IconDiamond />
   ) : suite === "HEART" ? (
     <IconHeart />
   ) : suite === "SPADE" ? (

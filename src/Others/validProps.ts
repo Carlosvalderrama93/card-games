@@ -18,7 +18,7 @@ const validProps: ValidProps = {
     { A: 11 },
   ],
   suite: [Suite.CLUB, Suite.DIAMOND, Suite.HEART, Suite.SPADE],
-  color: true,
+  color: "RED",
 };
 
 export default validProps;

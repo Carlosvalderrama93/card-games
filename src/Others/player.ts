@@ -1,10 +1,10 @@
 import { DefaultPlayer, Player, Players } from "./allTypes";
-import { newHand } from "./cards";
+import { createHand } from "./cards";
 
 const defaultPlayerConfig: DefaultPlayer = {
   img: "/img/default-avatar.png",
-  name: "Anonymous",
-  nickname: "",
+  name: "Player",
+  nickname: "Player",
   score: 0,
 };
 
@@ -17,7 +17,7 @@ export function createPlayer(
     ...defaultPlayerConfig,
     ...playerConfig,
     id: rawInfo,
-    hand: newHand(rawInfo),
+    hand: createHand(rawInfo),
   };
 
   return player;

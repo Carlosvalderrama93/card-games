@@ -1,5 +1,5 @@
 export type Rank = Record<string, number>;
-export type Color = boolean;
+export type Color = "RED" | "BLUE";
 export enum Suite {
   CLUB = "CLUB",
   DIAMOND = "DIAMOND",
@@ -11,9 +11,9 @@ export type ValidProps = { rank: Rank[]; color: Color; suite: Suite[] };
 
 export type Card = {
   id: string;
+  rank: string;
   score: number;
   suite: Suite;
-  rank: string;
   color: Color;
 };
 

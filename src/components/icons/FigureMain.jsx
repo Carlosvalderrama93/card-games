@@ -4,11 +4,8 @@ import FigureClub from "./FigureClub";
 import FigureDiamont from "./FigureDiamont";
 import FigureHeart from "./FigureHeart";
 import FigureSpade from "./FigureSpade";
-import propsValidator from "../../Others/propsValidator";
 
-function FigureMain({ suite, children }) {
-  const isValid = propsValidator({ suite }, 1);
-  if (children || !isValid) return null;
+function FigureMain({ suite }) {
   suite = suite.toUpperCase();
 
   return suite === "CLUB" ? (
@@ -19,7 +16,7 @@ function FigureMain({ suite, children }) {
     <div className="card-front-img">{<FigureHeart />}</div>
   ) : suite === "SPADE" ? (
     <div className="card-front-img">{<FigureSpade />}</div>
-  ) : null;
+  ) : undefined;
 }
 
 export default FigureMain;

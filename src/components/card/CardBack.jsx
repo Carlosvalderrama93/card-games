@@ -1,9 +1,6 @@
 import React from "react";
-import propsValidator from "../../Others/propsValidator";
 
-function cardBack({ color }) {
-  const isValid = propsValidator({ color }, 1);
-  if (!isValid) return null;
+function cardBack({ color = "BLUE" }) {
   const isBlue = color.toUpperCase() === "BLUE";
   const cardBlue = (
     <div className="card-back">

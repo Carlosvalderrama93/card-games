@@ -15,16 +15,16 @@ export function createCard(
   rawId: number,
   rank: Rank,
   suite: Suite,
-  color: Color = true
+  color: Color = "BLUE"
 ): Card {
-  const id: string = (suite + "_" + rawId).toLocaleLowerCase(); // check dinamyc value of "ACE:A = [1, 11]"
+  const id: string = `${suite}_${rawId}_${color}`.toLocaleLowerCase(); // check dinamyc value of "ACE:A = [1, 11]"
   const [key, value] = Object.entries(rank)[0];
   const card: Card = {
     id,
-    score: value,
+    color,
     suite,
     rank: key,
-    color: !color,
+    score: value,
   };
 
   return card;
@@ -48,16 +48,12 @@ export function createDeck(): Cards {
 
 export function eatCard(deck: Cards): Card | void {
   const card: Card | undefined = deck.pop();
-  if (deck) return card;
+  if (card) return card;
 }
 
 export function takeCard(player: Player, deck: Cards): void {
   const card: Card | undefined = deck.pop();
-  if (card) {
-    card.rank = "A";
-    card.score = 11;
-    player.hand.cards.push(card);
-  }
+  if (card) player.hand.cards.push(card);
 }
 
 export function takeCards(player: Player, deck: Cards, toTake: number): void {
@@ -70,14 +66,14 @@ export function takeCards(player: Player, deck: Cards, toTake: number): void {
 export function dealCards(
   deck: Cards,
   players: Players,
-  toTake: number = 1
+  toTake: number = 2
 ): void {
   players.forEach((player) => {
     takeCards(player, deck, toTake);
   });
 }
 
-export function newHand(id: string): Hand {
+export function createHand(id: string): Hand {
   const hand: Hand = { id, cards: [], score: 0 };
   return hand;
 }

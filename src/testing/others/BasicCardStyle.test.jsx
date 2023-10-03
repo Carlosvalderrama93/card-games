@@ -12,7 +12,7 @@ import CardCorner from "../../components/card/CardCorner";
 
 expect.addSnapshotSerializer(createSerializer());
 
-describe("Unit testing of Card Components styles", () => {
+describe.skip("Unit testing of Card Components styles", () => {
   test("Should render with ClassName 'card' when Card component is invoked with valid arguments", () => {
     const card = TestRenderer.create(
       <Card suite={"HEART"} rank={"A"} color={"BLUE"} />

@@ -2,8 +2,8 @@ import React from "react";
 
 import Card from "./card/Card";
 
-function CardGenerator({ deck }) {
-  return deck.map((card) => {
+function DrawHand({ hand }) {
+  return hand.map((card) => {
     return (
       <div className="board-cards-position" key={card.id}>
         <Card
@@ -17,4 +17,4 @@ function CardGenerator({ deck }) {
   });
 }
 
-export default CardGenerator;
+export default DrawHand;

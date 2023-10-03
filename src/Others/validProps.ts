@@ -1,12 +1,6 @@
-type Rank = Record<string, number>;
-enum Suite {
-  CLUB = "CLUB",
-  DIAMOND = "DIAMOND",
-  HEART = "HEART",
-  SPADE = "SPADE",
-}
+import { Suite, ValidProps } from "./allTypes";
 
-const validProps: Record<string, Rank[] | Suite[] | boolean> = {
+const validProps: ValidProps = {
   rank: [
     { P: 0 },
     { 2: 2 },
@@ -24,7 +18,7 @@ const validProps: Record<string, Rank[] | Suite[] | boolean> = {
     { A: 11 },
   ],
   suite: [Suite.CLUB, Suite.DIAMOND, Suite.HEART, Suite.SPADE],
-  color: true,
+  color: "RED",
 };
 
 export default validProps;

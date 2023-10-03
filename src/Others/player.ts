@@ -1,42 +1,31 @@
-import { newHand } from "./cards";
-import { Hand } from "./handScore";
+import { DefaultPlayer, Player, Players } from "./allTypes";
+import { createHand } from "./cards";
 
-type Player = {
-  id: string | null;
-  img: string;
-  hand: Hand[];
-  name: string;
-  nickName: string;
-  score: number;
-};
-
-type DefaultPlayerConfig = Omit<Player, "id" | "hand">;
-
-const defaultPlayerConfig: DefaultPlayerConfig = {
+const defaultPlayerConfig: DefaultPlayer = {
   img: "/img/default-avatar.png",
-  name: "Anonymous",
-  nickName: "",
+  name: "Player",
+  nickname: "Player",
   score: 0,
 };
 
 export function createPlayer(
   id: number,
-  playerConfig: Partial<DefaultPlayerConfig> = defaultPlayerConfig
+  playerConfig: DefaultPlayer = defaultPlayerConfig
 ): Player {
   const rawInfo: string = "player_" + id;
-  const newPlayer: Player = {
+  const player: Player = {
     ...defaultPlayerConfig,
     ...playerConfig,
     id: rawInfo,
-    hand: newHand(rawInfo),
+    hand: createHand(rawInfo),
   };
 
-  return newPlayer;
+  return player;
 }
 
-export function createPlayers(totalPlayers: number) {
-  const players: Player[] = [];
-  for (let i = 0; i <= totalPlayers; i++) {
+export function createPlayers(totalPlayers: number): Players {
+  const players: Players = [];
+  for (let i: number = 0; i <= totalPlayers; i++) {
     const player: Player = createPlayer(i);
     players.push(player);
   }
@@ -44,10 +33,11 @@ export function createPlayers(totalPlayers: number) {
   return players;
 }
 
-export function updatePlayers(players, quantity = 1) {
-  if (!players || typeof quantity !== "number") return undefined;
-  for (let i = 0; i < quantity; i++) {
-    const newPlayer = createPlayer();
-    players.push(newPlayer);
+export function updatePlayers(players: Players, quantity: number = 1): void {
+  if (players && typeof quantity === "number") {
+    for (let i = 0; i < quantity; i++) {
+      const newPlayer: Player = createPlayer(i);
+      players.push(newPlayer);
+    }
   }
 }

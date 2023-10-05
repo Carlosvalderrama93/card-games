@@ -7,7 +7,7 @@ import Title from "../Title";
 
 function CardFront({ suite, rank }) {
   return (
-    <div className="card-front">
+    <div className="card-front card">
       <CardCorner>
         <Title>{rank}</Title>
         <IconMain suite={suite} />

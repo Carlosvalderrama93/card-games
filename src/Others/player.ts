@@ -12,12 +12,12 @@ export function createPlayer(
   id: number,
   playerConfig: Partial<DefaultPlayer> = defaultPlayerConfig
 ): Player {
-  const rawInfo: string = `${playerConfig.name}_${id}`;
+  const rawId: string = `${playerConfig.name}_${id}`;
   const player: Player = {
     ...defaultPlayerConfig,
     ...playerConfig,
-    id: rawInfo,
-    hand: createHand(rawInfo),
+    id: rawId,
+    hand: createHand(rawId),
   };
 
   return player;

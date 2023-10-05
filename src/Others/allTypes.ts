@@ -6,8 +6,13 @@ export enum Suite {
   HEART = "HEART",
   SPADE = "SPADE",
 }
+export type Show = true | false;
 
-export type ValidProps = { rank: Rank[]; color: Color; suite: Suite[] };
+export type ValidProps = {
+  rank: Rank[];
+  color: Color;
+  suite: Suite[];
+};
 
 export type Card = {
   id: string;
@@ -15,6 +20,8 @@ export type Card = {
   score: number;
   suite: Suite;
   color: Color;
+  show: Show;
+  owner: string;
 };
 
 export type Cards = Card[];

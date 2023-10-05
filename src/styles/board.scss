@@ -1,15 +1,26 @@
 .board {
-  display: flex;
-  align-items: center;
   height: 100vh;
-
-  &-cards {
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 50px 75px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
-    gap: 25px;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-rows: 45% 40% auto;
+  gap: 15px;
+  &-area {
+    border: solid lightblue 1px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+.control-panel {
+  border: solid lightblue 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }

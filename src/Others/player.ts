@@ -10,14 +10,14 @@ const defaultPlayerConfig: DefaultPlayer = {
 
 export function createPlayer(
   id: number,
-  playerConfig: DefaultPlayer = defaultPlayerConfig
+  playerConfig: Partial<DefaultPlayer> = defaultPlayerConfig
 ): Player {
-  const rawInfo: string = "player_" + id;
+  const rawId: string = `${playerConfig.name}_${id}`;
   const player: Player = {
     ...defaultPlayerConfig,
     ...playerConfig,
-    id: rawInfo,
-    hand: createHand(rawInfo),
+    id: rawId,
+    hand: createHand(rawId),
   };
 
   return player;
@@ -26,8 +26,17 @@ export function createPlayer(
 export function createPlayers(totalPlayers: number): Players {
   const players: Players = [];
   for (let i: number = 0; i <= totalPlayers; i++) {
-    const player: Player = createPlayer(i);
-    players.push(player);
+    if (!i) {
+      const dealerConfig = {
+        name: "Dealer",
+        nickname: "Dealer",
+      };
+      const player: Player = createPlayer(i, dealerConfig);
+      players.push(player);
+    } else {
+      const player: Player = createPlayer(i);
+      players.push(player);
+    }
   }
 
   return players;

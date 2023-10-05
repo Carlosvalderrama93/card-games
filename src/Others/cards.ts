@@ -12,19 +12,21 @@ import { setHandScore } from "./handScore";
 import validProps from "./validProps";
 
 export function createCard(
-  rawId: number,
   rank: Rank,
   suite: Suite,
   color: Color = "BLUE"
 ): Card {
-  const id: string = `${suite}_${rawId}_${color}`.toLocaleLowerCase(); // check dinamyc value of "ACE:A = [1, 11]"
   const [key, value] = Object.entries(rank)[0];
+  const id: string = `${suite}_${key}_${color}`.toLocaleLowerCase(); // check dinamyc value of "ACE:A = [1, 11]"
+  const owner: string = "deck";
   const card: Card = {
     id,
     color,
     suite,
     rank: key,
     score: value,
+    show: true,
+    owner,
   };
 
   return card;
@@ -32,11 +34,11 @@ export function createCard(
 
 export function createDeck(): Cards {
   const { suite: suites, rank: ranks } = validProps;
+  let color: Color = "BLUE";
   const rawDeck: Cards = suites
     .map((suite) => {
-      const cards: Cards = ranks.map((rank, index) =>
-        createCard(index, rank, suite)
-      );
+      color === "BLUE" ? (color = "RED") : (color = "BLUE");
+      const cards: Cards = ranks.map((rank) => createCard(rank, suite, color));
       return cards;
     })
     .flat();
@@ -44,11 +46,6 @@ export function createDeck(): Cards {
   const deckFlat: Cards = rawDeck.flat();
   const deck: Cards = shuffleDeck(deckFlat);
   return deck;
-}
-
-export function eatCard(deck: Cards): Card | void {
-  const card: Card | undefined = deck.pop();
-  if (card) return card;
 }
 
 export function takeCard(player: Player, deck: Cards): void {
@@ -70,6 +67,11 @@ export function dealCards(
 ): void {
   players.forEach((player) => {
     takeCards(player, deck, toTake);
+    player.hand.cards.forEach((card, index) => {
+      card.owner = player.name.toLocaleLowerCase();
+      if (player.name === "Dealer" && index === 1)
+        player.hand.cards[index].show = false;
+    });
   });
 }
 

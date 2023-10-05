@@ -1,19 +1,20 @@
 import React from "react";
 
-function CardBack({ color = "BLUE" }) {
+function CardBack({ color = "BLUE", handleShowCard, id }) {
   const isBlue = color.toUpperCase() === "BLUE";
-  const cardBlue = (
-    <div className="card-back card">
-      <img src="/card-back-blue.svg" alt="cardColor blue" />
+  return (
+    <div
+      key={id}
+      className="card-back card"
+      onClick={() => handleShowCard(true)}
+    >
+      {isBlue ? (
+        <img src="/card-back-red.svg" alt="cardColor red" />
+      ) : (
+        <img src="/card-back-blue.svg" alt="cardColor blue" />
+      )}
     </div>
   );
-  const cardRed = (
-    <div className="card-back card">
-      <img src="/card-back-red.svg" alt="cardColor red" />
-    </div>
-  );
-
-  return isBlue ? cardBlue : cardRed;
 }
 
 export default CardBack;

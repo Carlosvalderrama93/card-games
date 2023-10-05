@@ -8,10 +8,9 @@ function Board() {
 
   return (
     <div className="board">
-      {players.map((player) => (
-        <DrawHands hand={player.hand} key={player.id} />
+      {players.map(({ hand, id }) => (
+        <DrawHands hand={hand} id={id} />
       ))}
-      <div className="control-panel">Control Panel</div>
     </div>
   );
 }

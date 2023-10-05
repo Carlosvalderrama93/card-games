@@ -1,8 +1,8 @@
 import DrawHand from "./DrawHand";
 
-function DrawHands({ hand, key }) {
+function DrawHands({ hand, id }) {
   return (
-    <div className="board-area" key={key}>
+    <div className="board-area" key={id}>
       <DrawHand cards={hand.cards} />
     </div>
   );

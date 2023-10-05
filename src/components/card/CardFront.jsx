@@ -5,9 +5,9 @@ import CardCorner from "./CardCorner";
 import IconMain from "../icons/IconMain";
 import Title from "../Title";
 
-function CardFront({ suite, rank, id }) {
+function CardFront({ suite, rank }) {
   return (
-    <div className="card-front card" key={id}>
+    <div className="card-front card" key={`${suite}_${rank}`}>
       <CardCorner>
         <Title>{rank}</Title>
         <IconMain suite={suite} />

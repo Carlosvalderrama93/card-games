@@ -8,8 +8,8 @@ function Board() {
 
   return (
     <div className="board">
-      {players.map(({ hand, id }) => (
-        <DrawHands hand={hand} id={id} />
+      {players.map(({ hand }) => (
+        <DrawHands hand={hand} />
       ))}
     </div>
   );

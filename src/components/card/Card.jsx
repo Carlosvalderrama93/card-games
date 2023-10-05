@@ -1,12 +1,13 @@
 import React from "react";
 
-import CardTop from "./CardTop";
+import CardFront from "./CardFront";
+import CardBack from "./CardBack";
 
-function Card(props) {
-  return (
-    <div className="card">
-      <CardTop rank={props.rank} suite={props.suite} color={props.color} />
-    </div>
+function Card({ rank, suite, color, show, key }) {
+  return show ? (
+    <CardFront rank={rank} suite={suite} key={key} />
+  ) : (
+    <CardBack color={color} key={key} />
   );
 }
 

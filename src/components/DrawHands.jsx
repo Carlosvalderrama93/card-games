@@ -1,13 +1,11 @@
 import DrawHand from "./DrawHand";
 
-function DrawHands({ hand, key }) {
+function DrawHands({ hand }) {
   return (
-    <div className="board-area" key={key}>
+    <div className="board-area" key={hand.id}>
       <DrawHand cards={hand.cards} />
     </div>
   );
 }
 
 export default DrawHands;
-
-import React from "react";

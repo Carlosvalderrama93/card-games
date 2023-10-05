@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CardFront from "./CardFront";
 import CardBack from "./CardBack";
 
-function Card({ rank, suite, color, show, key }) {
-  return show ? (
-    <CardFront rank={rank} suite={suite} key={key} />
+function Card({ rank, suite, color, show }) {
+  const [showCard, setShowCard] = useState(show);
+
+  return showCard ? (
+    <CardFront rank={rank} suite={suite} />
   ) : (
-    <CardBack color={color} key={key} />
+    <CardBack color={color} flipCard={setShowCard} />
   );
 }
 

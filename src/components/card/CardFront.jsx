@@ -7,7 +7,7 @@ import Title from "../Title";
 
 function CardFront({ suite, rank }) {
   return (
-    <div className="card-front card">
+    <div className="card-front card" key={`${suite}_${rank}`}>
       <CardCorner>
         <Title>{rank}</Title>
         <IconMain suite={suite} />

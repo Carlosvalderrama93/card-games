@@ -1,14 +1,5 @@
-import {
-  Card,
-  Cards,
-  Color,
-  Hand,
-  Player,
-  Players,
-  Rank,
-  Suite,
-} from "./allTypes";
-import { setHandScore } from "./handScore";
+import { Card, Cards, Color, Hand, Players, Rank, Suite } from "./allTypes";
+import { handScore } from "./handScore";
 import validProps from "./validProps";
 
 export function createCard(
@@ -48,31 +39,54 @@ export function createDeck(): Cards {
   return deck;
 }
 
-export function takeCard(player: Player, deck: Cards): void {
-  const card: Card | undefined = deck.pop();
-  if (card) player.hand.cards.push(card);
+export function takeCard(rawDeck: Cards): {
+  card: Card;
+  deck: Cards;
+} {
+  const deck: Cards = [...rawDeck];
+  const card: Card = deck[deck.length - 1];
+  deck.pop();
+  return { card, deck };
 }
 
-export function takeCards(player: Player, deck: Cards, toTake: number): void {
+export function takeCards(
+  rawDeck: Cards,
+  toTake: number
+): { cards: Cards; deck: Cards } {
+  let deck: Cards = [...rawDeck];
+  const cards: Cards = [];
   for (let i: number = 0; i < toTake; i++) {
-    takeCard(player, deck);
-    setHandScore(player.hand);
+    const { card, deck: uDeck } = takeCard(deck);
+    deck = uDeck;
+    cards.push(card);
   }
+
+  return { cards, deck };
 }
 
 export function dealCards(
-  deck: Cards,
-  players: Players,
+  rawDeck: Cards,
+  rawPlayers: Players,
   toTake: number = 2
-): void {
+): { deck: Cards; players: Players } {
+  const players: Players = [...rawPlayers];
+  let deck: Cards = [...rawDeck];
   players.forEach((player) => {
-    takeCards(player, deck, toTake);
+    const { cards, deck: uDeck } = takeCards(deck, toTake);
+    player.hand.cards.push(...cards);
     player.hand.cards.forEach((card, index) => {
       card.owner = player.name.toLocaleLowerCase();
       if (player.name === "Dealer" && index === 1)
         player.hand.cards[index].show = false;
     });
+    deck = uDeck;
   });
+
+  players.forEach((player) => {
+    player.hand.score = handScore(player.hand.cards);
+  });
+
+  return { deck, players };
 }
 
 export function createHand(id: string): Hand {

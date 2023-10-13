@@ -8,8 +8,9 @@ function DrawHands({ player, deck }) {
   const isDisableButton = hand.cards.some((card) => card.show === false);
 
   const [cards, setCards] = useState(hand.cards);
-  const [score, setScore] = useState(handScore(cards));
   const [disableButton, setDisableButton] = useState(isDisableButton);
+  const [score, setScore] = useState(handScore(cards));
+  useEffect(() => handleUpdateScore(cards), [cards]);
 
   function handleUpdateScore(cards, show) {
     const total = handScore(cards, show);
@@ -21,8 +22,6 @@ function DrawHands({ player, deck }) {
     setCards([...cards, card]);
     deck.current = updatedDeck;
   }
-
-  useEffect(() => handleUpdateScore(cards), [cards]);
 
   return (
     <div className="board-area" key={hand.id}>
@@ -38,7 +37,7 @@ function DrawHands({ player, deck }) {
       </div>
       <DrawHand
         cards={cards}
-        sb={setDisableButton}
+        disableButton={setDisableButton}
         handleUpdateScore={handleUpdateScore}
       />
     </div>

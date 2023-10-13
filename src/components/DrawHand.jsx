@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "./card/Card";
 
-function DrawHand({ cards, handleUpdateScore, sb }) {
+function DrawHand({ cards, handleUpdateScore, disableButton }) {
   return cards.map(({ suite, rank, color, show }) => {
     return (
       <Card
@@ -12,7 +12,7 @@ function DrawHand({ cards, handleUpdateScore, sb }) {
         show={show}
         handleUpdateScore={handleUpdateScore}
         cards={cards}
-        sb={sb}
+        disableButton={disableButton}
       />
     );
   });

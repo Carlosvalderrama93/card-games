@@ -8,7 +8,7 @@ export function handScore(rawCards: Cards, show: boolean = false): number {
   let numberAces: number = cards.filter((card) => card.rank === "A").length;
 
   while (numberAces) {
-    if (score < 21) break;
+    if (score <= 21) break;
     score -= 10;
     numberAces -= 1;
   }

@@ -3,12 +3,11 @@ import { createDeck, dealCards } from "./cards";
 import { createPlayers } from "./player";
 
 function startGame(initialPlayers: number = 1): StartGame {
-  const deck: Cards = createDeck();
-  const players: Players = createPlayers(initialPlayers);
-  dealCards(deck, players, 2);
-  const score: number = 0; // previous value was 'null' intead of '0'
+  const rawDeck: Cards = createDeck();
+  const rawPlayers: Players = createPlayers(initialPlayers);
+  const { deck, players } = dealCards(rawDeck, rawPlayers, 2);
 
-  return { deck, players, score };
+  return { deck, players };
 }
 
 export default startGame;

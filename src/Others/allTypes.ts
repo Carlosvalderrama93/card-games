@@ -43,5 +43,4 @@ export type DefaultPlayer = Omit<Player, "id" | "hand">;
 export type StartGame = {
   deck: Cards;
   players: Players;
-  score: number;
 };

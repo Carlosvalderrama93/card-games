@@ -17,8 +17,9 @@ function DrawHands({ player, deck }) {
   }
 
   function handleTakeCard() {
-    const { card } = takeCard(deck);
+    const { card, deck: updatedDeck } = takeCard(deck.current);
     setCards([...cards, card]);
+    deck.current = updatedDeck;
   }
 
   useEffect(() => handleUpdateScore(cards), [cards]);

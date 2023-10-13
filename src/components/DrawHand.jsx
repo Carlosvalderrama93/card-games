@@ -2,8 +2,8 @@ import React from "react";
 
 import Card from "./card/Card";
 
-function DrawHand({ hand, handleUpdateScore }) {
-  return hand.cards.map(({ suite, rank, color, show }) => {
+function DrawHand({ cards, handleUpdateScore, sb }) {
+  return cards.map(({ suite, rank, color, show }) => {
     return (
       <Card
         suite={suite}
@@ -11,7 +11,8 @@ function DrawHand({ hand, handleUpdateScore }) {
         color={color}
         show={show}
         handleUpdateScore={handleUpdateScore}
-        cards={hand.cards}
+        cards={cards}
+        sb={sb}
       />
     );
   });

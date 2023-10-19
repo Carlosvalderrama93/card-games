@@ -11,12 +11,19 @@ function Card({
   handleUpdateScore,
   cards,
   disableButton,
+  flip,
+  stand,
+  hit,
 }) {
   const [showCard, setShowCard] = useState(show);
   function handleFlip(cards) {
-    setShowCard(true);
-    handleUpdateScore(cards, true);
-    disableButton(false);
+    if (flip) {
+      setShowCard(true);
+      handleUpdateScore(cards, true);
+      disableButton(false);
+      stand(false);
+      hit(false);
+    }
   }
 
   return showCard ? (

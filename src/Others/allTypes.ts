@@ -6,6 +6,13 @@ export enum Suite {
   HEART = "HEART",
   SPADE = "SPADE",
 }
+type Actions = {
+  hit: boolean;
+  stand: boolean;
+  doubleDown: boolean;
+  split: boolean;
+  surrender: boolean;
+};
 export type Show = true | false;
 
 export type ValidProps = {
@@ -23,10 +30,16 @@ export type Card = {
   show: Show;
   owner: string;
 };
+type HandState = { won: boolean; lost: boolean };
 
 export type Cards = Card[];
 
-export type Hand = { id: string; cards: Cards; score: number };
+export type Hand = {
+  id: string;
+  cards: Cards;
+  score: number;
+  state: HandState;
+};
 
 export type Player = {
   img: string;
@@ -35,6 +48,7 @@ export type Player = {
   score: number;
   id: string;
   hand: Hand;
+  actions: Actions;
 };
 
 export type Players = Player[];

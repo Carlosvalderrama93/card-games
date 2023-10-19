@@ -4,9 +4,9 @@ import Card from "./card/Card";
 
 function DrawHand({
   cards,
-  handleUpdateScore,
+  updateScore,
   disableButton,
-  flip,
+  toFlip,
   stand,
   hit,
 }) {
@@ -17,10 +17,10 @@ function DrawHand({
         rank={rank}
         color={color}
         show={show}
-        handleUpdateScore={handleUpdateScore}
+        updateScore={updateScore}
         cards={cards}
         disableButton={disableButton}
-        flip={flip}
+        toFlip={toFlip}
         stand={stand}
         hit={hit}
       />

@@ -4,7 +4,7 @@ import startGame from "../Others/startGame";
 import DrawHands from "./DrawHands";
 
 function Board() {
-  const [flip, setFlip] = useState(false);
+  const [toFlip, setToFlip] = useState(false);
   const { players, deck } = startGame();
   const refDeck = useRef(deck);
 
@@ -14,7 +14,7 @@ function Board() {
         <DrawHands
           player={player}
           deck={refDeck}
-          flip={{ state: flip, set: setFlip }}
+          toFlip={{ state: toFlip, set: setToFlip }}
         />
       ))}
     </div>

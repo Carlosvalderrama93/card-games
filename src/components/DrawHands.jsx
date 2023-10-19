@@ -3,7 +3,7 @@ import DrawHand from "./DrawHand";
 import { takeCard } from "../Others/cards";
 import { handScore } from "../Others/handScore";
 
-function DrawHands({ player, deck, flip }) {
+function DrawHands({ player, deck, toFlip }) {
   const { hand, name, actions } = player;
   const isDisableButton = hand.cards.some((card) => card.show === false);
 
@@ -14,20 +14,19 @@ function DrawHands({ player, deck, flip }) {
   const [handState, setHandState] = useState(hand.state);
   const [disableHit, setDisableHit] = useState(false);
 
-  useEffect(() => handleUpdateScore(cards), [cards]);
   useEffect(() => {
+    updateScore(cards);
     if (score > 21) setHandState({ ...handState, lost: true });
     if (score === 21) setHandState({ ...handState, won: true });
-  }, [score]);
-  useEffect(() => {
+
     if (disableButton || stand || handState.won || handState.lost) {
       setDisableHit(true);
       setStand(true);
-      if (handState.won || handState.lost) flip.set(true);
+      if (handState.won || handState.lost) toFlip.set(true);
     }
-  }, [disableButton, stand, handState.won, handState.lost]);
+  }, [cards, score, disableButton, stand, handState.won, handState.lost]);
 
-  function handleUpdateScore(cards, show) {
+  function updateScore(cards, show) {
     const total = handScore(cards, show);
     setScore(total);
   }
@@ -40,7 +39,7 @@ function DrawHands({ player, deck, flip }) {
 
   function handleStand() {
     setStand(true);
-    flip.set(true);
+    toFlip.set(true);
   }
 
   return (
@@ -66,8 +65,8 @@ function DrawHands({ player, deck, flip }) {
       <DrawHand
         cards={cards}
         disableButton={setDisableButton}
-        handleUpdateScore={handleUpdateScore}
-        flip={flip.state}
+        updateScore={updateScore}
+        toFlip={toFlip.state}
         stand={setStand}
         hit={setDisableHit}
       />

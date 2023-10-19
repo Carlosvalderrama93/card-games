@@ -8,15 +8,22 @@ function Card({
   suite,
   color,
   show,
-  handleUpdateScore,
+  updateScore,
   cards,
   disableButton,
+  toFlip,
+  stand,
+  hit,
 }) {
   const [showCard, setShowCard] = useState(show);
   function handleFlip(cards) {
-    setShowCard(true);
-    handleUpdateScore(cards, true);
-    disableButton(false);
+    if (toFlip) {
+      setShowCard(true);
+      updateScore(cards, true);
+      disableButton(false);
+      stand(false);
+      hit(false);
+    }
   }
 
   return showCard ? (

@@ -6,6 +6,13 @@ const defaultPlayerConfig: DefaultPlayer = {
   name: "Player",
   nickname: "Player",
   score: 0,
+  actions: {
+    hit: false,
+    stand: false,
+    doubleDown: false,
+    split: false,
+    surrender: false,
+  },
 };
 
 export function createPlayer(

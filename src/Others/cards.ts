@@ -90,7 +90,12 @@ export function dealCards(
 }
 
 export function createHand(id: string): Hand {
-  const hand: Hand = { id, cards: [], score: 0 };
+  const hand: Hand = {
+    id,
+    cards: [],
+    score: 0,
+    state: { won: false, lost: false },
+  };
   return hand;
 }
 

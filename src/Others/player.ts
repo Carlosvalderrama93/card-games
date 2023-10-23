@@ -6,6 +6,7 @@ const defaultPlayerConfig: DefaultPlayer = {
   name: "Player",
   nickname: "Player",
   score: 0,
+  secondHand: false,
   actions: {
     hit: false,
     stand: false,

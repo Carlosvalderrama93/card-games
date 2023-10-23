@@ -48,6 +48,7 @@ export type Player = {
   score: number;
   id: string;
   hand: Hand;
+  secondHand: boolean | Hand;
   actions: Actions;
 };
 

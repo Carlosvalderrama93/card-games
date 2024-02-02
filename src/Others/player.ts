@@ -1,5 +1,4 @@
-import { DefaultPlayer, Player, Players } from "./allTypes";
-import { createHand } from "./cards";
+import { DefaultPlayer, Hand, Player, Players } from "./allTypes";
 
 const defaultPlayerConfig: DefaultPlayer = {
   img: "/img/default-avatar.png",
@@ -56,4 +55,14 @@ export function updatePlayers(players: Players, quantity: number = 1): void {
       players.push(newPlayer);
     }
   }
+}
+
+export function createHand(id: string): Hand {
+  const hand: Hand = {
+    id,
+    cards: [],
+    score: 0,
+    state: { won: false, lost: false },
+  };
+  return hand;
 }

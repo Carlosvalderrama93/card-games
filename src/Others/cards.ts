@@ -1,6 +1,24 @@
-import { Card, Cards, Color, Hand, Players, Rank, Suite } from "./allTypes";
-import { handScore } from "./handScore";
+import { useDispatch, useSelector } from "react-redux";
+import { Card, Cards, Color, Players, Rank, Suite } from "./allTypes";
 import validProps from "./validProps";
+import { deletedcard } from "../features/cards/deckSlice";
+import { takedCard } from "../features/players/playerSlice";
+
+export function createDeck(): Cards {
+  const { suite: suites, rank: ranks } = validProps;
+  let color: Color = "BLUE";
+  const rawDeck: Cards = suites
+    .map((suite) => {
+      color === "BLUE" ? (color = "RED") : (color = "BLUE");
+      const cards: Cards = ranks.map((rank) => createCard(rank, suite, color));
+      return cards;
+    })
+    .flat();
+
+  const deckFlat: Cards = rawDeck.flat();
+  const deck: Cards = shuffleDeck(deckFlat);
+  return deck;
+}
 
 export function createCard(
   rank: Rank,
@@ -23,80 +41,29 @@ export function createCard(
   return card;
 }
 
-export function createDeck(): Cards {
-  const { suite: suites, rank: ranks } = validProps;
-  let color: Color = "BLUE";
-  const rawDeck: Cards = suites
-    .map((suite) => {
-      color === "BLUE" ? (color = "RED") : (color = "BLUE");
-      const cards: Cards = ranks.map((rank) => createCard(rank, suite, color));
-      return cards;
-    })
-    .flat();
-
-  const deckFlat: Cards = rawDeck.flat();
-  const deck: Cards = shuffleDeck(deckFlat);
-  return deck;
+export function dealCards(toTake: number = 2): void {
+  const players: Players = useSelector((state) => state.players);
+  players.forEach(({ id }) => takeCards({ playerId: id, toTake }));
 }
 
-export function takeCard(rawDeck: Cards): {
-  card: Card;
-  deck: Cards;
-} {
-  const deck: Cards = [...rawDeck];
+export function takeCards({
+  playerId,
+  toTake,
+}: {
+  playerId: string;
+  toTake: number;
+}): void {
+  for (let i: number = 0; i < toTake; i++) takeCard(playerId);
+}
+
+export function takeCard(playerId: string): void {
+  const deck = useSelector((state) => state.deck);
+  const dispatch = useDispatch();
   const card: Card = deck[deck.length - 1];
-  deck.pop();
-  return { card, deck };
-}
+  const idCard = card.id;
 
-export function takeCards(
-  rawDeck: Cards,
-  toTake: number
-): { cards: Cards; deck: Cards } {
-  let deck: Cards = [...rawDeck];
-  const cards: Cards = [];
-  for (let i: number = 0; i < toTake; i++) {
-    const { card, deck: uDeck } = takeCard(deck);
-    deck = uDeck;
-    cards.push(card);
-  }
-
-  return { cards, deck };
-}
-
-export function dealCards(
-  rawDeck: Cards,
-  rawPlayers: Players,
-  toTake: number = 2
-): { deck: Cards; players: Players } {
-  const players: Players = [...rawPlayers];
-  let deck: Cards = [...rawDeck];
-  players.forEach((player) => {
-    const { cards, deck: uDeck } = takeCards(deck, toTake);
-    player.hand.cards.push(...cards);
-    player.hand.cards.forEach((card, index) => {
-      card.owner = player.name.toLocaleLowerCase();
-      if (player.name === "Dealer" && index === 1)
-        player.hand.cards[index].show = false;
-    });
-    deck = uDeck;
-  });
-
-  players.forEach((player) => {
-    player.hand.score = handScore(player.hand.cards);
-  });
-
-  return { deck, players };
-}
-
-export function createHand(id: string): Hand {
-  const hand: Hand = {
-    id,
-    cards: [],
-    score: 0,
-    state: { won: false, lost: false },
-  };
-  return hand;
+  dispatch(deletedcard(idCard));
+  dispatch(takedCard({ card, playerId }));
 }
 
 export function shuffleDeck(deck: Cards): Cards {

@@ -7,11 +7,12 @@ const deckSlice = createSlice({
   name: "deck",
   initialState,
   reducers: {
-    takecard: (state, payload) => {
-      debugger;
+    deletedcard: (state, action) => {
+      const cardId = action.payload;
+      return state.filter((card) => card.id !== cardId);
     },
   },
 });
 
-export const { takecard } = deckSlice.actions;
+export const { deletedcard } = deckSlice.actions;
 export default deckSlice.reducer;
